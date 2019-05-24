@@ -8,4 +8,8 @@ Nesse projeto esta sendo usado:
   + Body-Parser
 
 Aida não comecei a construir as views entretanto escolhi que irei utilizar Vue.JS
+<<<<<<< HEAD
   
+=======
+  
+>>>>>>> origin/master

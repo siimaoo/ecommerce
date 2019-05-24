@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
+<<<<<<< HEAD
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+=======
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+>>>>>>> origin/master
 const produtoRoute = require('./routes/produtos');
 
 const url = 'url';
@@ -24,10 +29,18 @@ mongoose.connection.on('connected', () => {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+<<<<<<< HEAD
 app.use('/produtos', produtoRoute);
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000')
 });
+=======
+app.use('/', produtoRoute);
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000!');
+})
+>>>>>>> origin/master
 
 module.exports = app;

@@ -1,16 +1,28 @@
 {
   "name": "ecommerce",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+  "description": "Ecommerce usando node",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+>>>>>>> origin/master
   },
   "author": "Lucas Simão",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+<<<<<<< HEAD
     "express": "^4.17.0",
     "mongoose": "^5.5.10"
+=======
+    "express": "^4.16.4",
+    "mongoose": "^5.5.5"
+>>>>>>> origin/master
   }
 }
