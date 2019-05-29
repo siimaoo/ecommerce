@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <style>
+        #drawer {
+            left: -100%;
+            transition: all .3s ease-in-out;
+        }
+
+        #erro {
+            display: none;
+        }
+        .v-alert{
+            float: right !important;
+            width: 100%;
+        }
+        .alerts {
+            position: relative;
+            left: calc(100% - 500px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+
+            <!-- Menu -->
+            <template>
+                <v-toolbar class="indigo white--text">
+                    <v-toolbar-side-icon class="white--text" onclick="abrir()"></v-toolbar-side-icon>
+                    <v-toolbar-title>Dashboard</v-toolbar-title>
+                </v-toolbar>
+            </template>
+            <template>
+                <v-navigation-drawer id="drawer" permanent fixed>
+                    <v-list>
+                        <v-expansion-panel>
+                            <v-expansion-panel-content>
+                                <template v-slot:header>
+                                    <div>Produtos</div>
+                                </template>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Listar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Listar por Slug</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Atualizar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Deletar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Adicionar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                        <v-expansion-panel>
+                            <v-expansion-panel-content>
+                                <template v-slot:header>
+                                    <div>Clientes</div>
+                                </template>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Listar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Listar por Slug</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Atualizar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Deletar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Adicionar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                        <v-expansion-panel>
+                            <v-expansion-panel-content>
+                                <template v-slot:header>
+                                    <div>Administradores</div>
+                                </template>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Listar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Listar por Slug</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Atualizar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Deletar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                                <v-list-tile>
+                                    <v-list-tile-action>
+                                        <i class="material-icons"></i>
+                                    </v-list-tile-action>
+                                    <v-list-tile-content>
+                                        <v-list-tile-title>Adicionar</v-list-tile-title>
+                                    </v-list-tile-content>
+                                </v-list-tile>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                    </v-list>
+                </v-navigation-drawer>
+            </template>
+            <!-- Fim Menu -->
+            <section class="alerts" style="max-width: 500px; width: 100%;">
+                <v-alert :value="true" type="error" v-model="alert" dismissible
+                    transition="scale-transition">
+                    {{mensagem}}
+                </v-alert>
+                <v-alert :value="true" type="success" v-model="alertSuccess" dismissible
+                    transition="scale-transition">
+                    {{mensagem}}
+                </v-alert>
+            </section>
+            <section>
+
+                <div class="container">
+
+                    <h1>Dashboard</h1>
+                    <p>Nesse painel você poderá controlar o estoque, os Administradores entre outros</p>
+                    <br>
+                    <h1>Quantidade de clientes: </h1>
+                    <h2>1000</h2>
+                    <br>
+                    <h1>Quantidade de produtos: </h1>
+                    <h2>{{dados}}</h2>
+                    <br>
+                </div>
+            </section>
+
+
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    alert: false,
+                    alertSuccess: false,
+                    alertInfo: true,
+                    mensagem: "",
+                    numProdutos: 0,
+                    dados: null
+                }
+            },
+            mounted() {
+                axios
+                    .get('http://localhost:3000/produtos')
+                    .then(response => {
+                        dados = response.data;
+                        this.alertSuccess = true;
+                        this.mensagem = "Requisição realizada com sucesso!";
+                        while (i > this.response.data) {
+                            i++;
+                        }
+                        this.numProdutos = i;
+                    })
+                    .catch((error) => {
+                        this.alert = true;
+                        this.mensagem = "Erro ao realizar a requisição";
+                    })
+            }
+        })
+    </script>
+    <script>
+        function abrir() {
+            let drawer = document.getElementById('drawer');
+            if (drawer.offsetLeft != 0) {
+                drawer.style.left = 0;
+            }
+            else {
+                drawer.style.left = "-100%";
+            }
+
+        }
+        let drawer = document.getElementById('drawer');
+        document.addEventListener("click", function (e) {
+            if (drawer.offsetLeft == 0) {
+                var fora = !drawer.contains(e.target);
+                if (fora) drawer.style.left = "-100%";
+            }
+            else {
+                //
+            }
+        });
+
+    </script>
+</body>
+
+</html>
