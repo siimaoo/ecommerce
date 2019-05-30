@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 const produtoRoute = require('./routes/produtos');
 const userRoute = require('./routes/users');
 
-const url = 'url';
-const option = {reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true};
+const url = 'mongodb+srv://simao:010569mae@cluster0-za2ow.mongodb.net/test?retryWrites=true';
+const option = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, option);
 mongoose.set('useCreateIndex', true);
@@ -22,8 +22,17 @@ mongoose.connection.on('connected', () => {
     console.log('Conectado ao banco de dados!');
 });
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    res.set({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    })
+    next();
+})
 
 app.use('/produtos', produtoRoute);
 app.use('/usuarios', userRoute);
