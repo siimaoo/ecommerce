@@ -42,5 +42,8 @@ module.exports = {
                 return res.send({data, token: createUserToken(data.id)});
             })
         }).select('+senha');
+    },
+    validacao(req, res) {
+        return res.send({status: "Valido"});
     }
 }
