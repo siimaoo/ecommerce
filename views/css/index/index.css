@@ -1,0 +1,29 @@
+.banner {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background: url('https://media.hypedc.com/media/catalog/product/cache/1/image/1500x/9df78eab33525d08d6e5fb8d27136e95/_/o/_o8a2824_2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 70% auto;
+    background-position: center center;
+}
+.banner::before {
+    content: "Muito mais que um tenis";
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    height: 40px;
+    width: 300px;
+    text-align: center;
+    padding-top: 15px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 0px 0px 15px #43cea2;
+    border-radius: 50px;
+}

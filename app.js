@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const produtoRoute = require('./routes/produtos');
 const userRoute = require('./routes/users');
 
-const url = 'string de conexao';
+const url = 'mongodb+srv://simao:010569mae@cluster0-za2ow.mongodb.net/test?retryWrites=true&w=majority';
 const option = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, option);
