@@ -8,6 +8,7 @@ const userRoute = require('./routes/users');
 
 const url = 'url';
 const option = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
+const porta = process.env.PORT || 3000; 
 
 mongoose.connect(url, option);
 mongoose.set('useCreateIndex', true);
@@ -37,7 +38,7 @@ app.use((req, res, next) => {
 app.use('/produtos', produtoRoute);
 app.use('/usuarios', userRoute);
 
-app.listen(3000, () => {
+app.listen(porta, () => {
     console.log('Servidor rodando na porta 3000')
 });
 
