@@ -41,8 +41,11 @@
         </div>
         <section>
             <div class="container">
+                <div class="titulo-section">
+                    <h1>Alguns produtos</h1>
+                </div>
                 <div class="row">
-                    <div class="col" v-for="produto in produto">
+                    <div class="col produtos" v-for="produto in produto.slice(0, 5)">
                         <div class="produto">
                             <div class="img">
                                 <img :src="produto.imagem[0]" alt="">
@@ -51,11 +54,11 @@
                                 {{produto.nome}}
                             </div>
                             <div class="preco">
-                                {{produto.preco}}
+                                R$ {{produto.preco}}
                             </div>
                             <div class="action">
-                                <a href="#">Comprar</a>
-                                <a href="#">Detalhes</a>
+                                <button id="comprar">Comprar</button>
+                                <button id="detalhes">Detalhes</button>
                             </div>
                         </div>
                     </div>

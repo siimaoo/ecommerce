@@ -6,6 +6,7 @@
     background-attachment: fixed;
     background-size: 70% auto;
     background-position: center center;
+    padding-top: 100px;
 }
 .banner::before {
     content: "Muito mais que um tenis";
@@ -26,4 +27,71 @@
     background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     box-shadow: 0px 0px 15px #43cea2;
     border-radius: 50px;
+}
+.produtos {
+    min-width: 300px;
+    width: 300px;
+    margin: 15px;
+    border: 1px solid rgb(189, 189, 189);
+    overflow: hidden;
+}
+.produto {
+    height: 100%;
+    
+}
+.produtos img {
+    width: auto;
+    height: 300px;
+    position: relative;
+    top: 0;
+}
+.produto .titulo {
+    text-align: center;
+    font-size: 1.4em;
+}
+.produto .preco {
+    text-align: right;
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+#comprar, #detalhes{
+    width: calc(50% - 10px);
+    height: 40px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: 700;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#comprar {
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#detalhes {
+    background: #FF512F;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.titulo-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.titulo-section h1 {
+    background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: transparent;
+    -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2em;
 }
