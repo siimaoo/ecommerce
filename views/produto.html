@@ -37,18 +37,16 @@
                 </div>
             </div>
         </nav>
-        <div class="banner">
-        </div>
         <section>
             <div class="container">
                 <div class="titulo-section">
                     <h1>Alguns produtos</h1>
                 </div>
                 <div class="row">
-                    <div class="col produtos" v-for="produto in produto.slice(0, 5)">
+                    <div class="col produtos">
                         <div class="produto">
                             <div class="img">
-                                <img :src="produto.imagem[0]" alt="">
+                                <img :src="produto.imagem" alt="">
                             </div>
                             <div class="titulo">
                                 {{produto.nome}}
@@ -59,8 +57,8 @@
                             </div>
                             <br>
                             <div class="action">
-                                <button id="comprar" v-on:click="">Comprar</button>
-                                <button id="detalhes" v-on:click="detalhesProdutos(produto.slug)">Detalhes</button>
+                                <button id="comprar">Comprar</button>
+                                <button id="detalhes">Detalhes</button>
                             </div>
                         </div>
                     </div>
@@ -85,12 +83,47 @@
                 this.buscarProdutos();
             },
             methods: {
-                detalhesProdutos: function(slug) {
-                    window.location.href = "produto.html?produto="+slug;
+                urlDecode: function (string, overwrite) {
+                    if (!string || !string.length) {
+                        return {};
+                    }
+                    let obj = {};
+                    let pairs = string.split('&');
+                    let pair, name, value;
+                    let lsRegExp = /\+/g;
+                    for (let i = 0, len = pairs.length; i < len; i++) {
+                        pair = pairs[i].split('=');
+                        name = unescape(pair[0]);
+                        value = unescape(pair[1]).replace(lsRegExp, " ");
+                        //value = decodeURIComponent(pair[1]).replace(lsRegExp, " ");
+                        if (overwrite !== true) {
+                            if (typeof obj[name] == "undefined") {
+                                obj[name] = value;
+                            } else if (typeof obj[name] == "string") {
+                                obj[name] = [obj[name]];
+                                obj[name].push(value);
+                            } else {
+                                obj[name].push(value);
+                            }
+                        } else {
+                            obj[name] = value;
+                        }
+                    }
+                    return obj;
                 },
+
+
+                getvar: function (param) {
+                    let wl = window.location.href;
+                    let params = this.urlDecode(wl.substring(wl.indexOf("?") + 1));
+                    return (params[param]);
+                }
+                ,
                 buscarProdutos: function () {
-                    axios.get('https://ecommerce-simao.herokuapp.com/api/produtos')
+
+                    axios.get('https://ecommerce-simao.herokuapp.com/api/produtos/' + this.getvar("produto"))
                         .then((response) => {
+                            console.log(response)
                             this.produto = response.data;
                         });
                 },
