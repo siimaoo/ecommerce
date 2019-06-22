@@ -9,6 +9,7 @@ const viewsRoute = require('./routes/views');
 
 const url = '';
 const option = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
+const porta = process.env.PORT || 3000; 
 
 mongoose.connect(url, option);
 mongoose.set('useCreateIndex', true);
@@ -39,7 +40,7 @@ app.use('/', viewsRoute);
 app.use('/api/produtos', produtoRoute);
 app.use('/api/usuarios', userRoute);
 
-app.listen(3000, () => {
+app.listen(porta, () => {
     console.log('Servidor rodando na porta 3000')
 });
 
