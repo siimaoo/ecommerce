@@ -7,7 +7,7 @@ const produtoRoute = require('./routes/produtos');
 const userRoute = require('./routes/users');
 const viewsRoute = require('./routes/views');
 
-const url = '';
+const url = 'mongodb+srv://simao:010569mae@cluster0-za2ow.mongodb.net/test?retryWrites=true&w=majority';
 const option = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 const porta = process.env.PORT || 3000; 
 
