@@ -16,7 +16,7 @@ module.exports = {
         Produtos.findOne({
             slug: req.params.slug,
             active: true
-        }, 'nome descricao preco slug', (err, data) => {
+        }, (err, data) => {
             if (err)  return res.status(500).send({ mensagem: "Falha ao processar sua requisição" })
             return res.status(200).send(data);
         })
