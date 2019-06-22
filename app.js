@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     res.set({
-        'Access-Control-Allow-Origin': 'https://ecommerce-simao.herokuapp.com/',
+        'Access-Control-Allow-Origin': 'https://ecommerce-simao.herokuapp.com/, 177.177.41.108',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type'
     })
