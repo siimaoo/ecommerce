@@ -21,21 +21,47 @@
                     </div>
                     <div class="col links">
                         <ul>
-                            <li><a href="http://localhost:5500/views/">Página Inicial</a></li>
+                            <li><a href="https://ecommerce-simao.herokuapp.com">Página Inicial</a></li>
                             <li><a href="#">Categorias</a></li>
-                            <li><a href="http://localhost:5500/views/contato.html">Contato</a></li>
-                            <li><a href="http://localhost:5500/views/carrinho.html">Carrinho</a></li>
-                            <li v-if="logado"><a href="http://localhost:5500/views/minha-conta.html" >Minha Conta</a></li>
-                            <li v-if="naoLogado"><a href="http://localhost:5500/views/login.html" >Entrar | Cadastre-se</a></li>
-                            <li v-if="logado"><a href="http://localhost:5500/views/"  v-on:click="sair">Sair</a></li>
+                            <li><a href="https://ecommerce-simao.herokuapp.com/contato">Contato</a></li>
+                            <li><a href="https://ecommerce-simao.herokuapp.com/carrinho">Carrinho</a></li>
+                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com/minha-conta">Minha
+                                    Conta</a>
+                            </li>
+                            <li v-if="naoLogado"><a href="https://ecommerce-simao.herokuapp.com/login">Entrar |
+                                    Cadastre-se</a></li>
+                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com" v-on:click="sair">Sair</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
         <div class="banner">
-
         </div>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col" v-for="produto in produto">
+                        <div class="produto">
+                            <div class="img">
+                                <img :src="produto.imagem[0]" alt="">
+                            </div>
+                            <div class="titulo">
+                                {{produto.nome}}
+                            </div>
+                            <div class="preco">
+                                {{produto.preco}}
+                            </div>
+                            <div class="action">
+                                <a href="#">Comprar</a>
+                                <a href="#">Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -46,19 +72,27 @@
                 return {
                     logado: null,
                     naoLogado: null,
+                    produto: []
                 }
             },
             mounted() {
                 this.verifyLogin();
+                this.buscarProdutos();
             },
             methods: {
+                buscarProdutos: function () {
+                    axios.get('https://ecommerce-simao.herokuapp.com/api/produtos')
+                        .then((response) => {
+                            this.produto = response.data;
+                        });
+                },
                 verifyLogin: function () {
                     if (localStorage.getItem('token') == null) {
                         this.logado = false
                         this.naoLogado = true;
                     }
                     else {
-                        axios.get('http://localhost:3000/usuarios/validar-token/?auth=' + localStorage.getItem('token'))
+                        axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/validar-token/?auth=' + localStorage.getItem('token'))
                             .then((response) => {
                                 console.log(response.data.status);
                                 if (response.data.status == "Valido") {
@@ -74,7 +108,7 @@
                 },
                 sair: function () {
                     localStorage.removeItem('token');
-                    window.location.href = "http://localhost:5500/views/"
+                    window.location.href = "https://ecommerce-simao.herokuapp.com/"
                 }
             }
         });

@@ -18,15 +18,15 @@
                     </div>
                     <div class="col links">
                         <ul>
-                            <li><a href="http://localhost:5500/views/">Página Inicial</a></li>
+                            <li><a href="https://ecommerce-simao.herokuapp.com">Página Inicial</a></li>
                             <li><a href="#">Categorias</a></li>
-                            <li><a href="http://localhost:5500/views/contato.html">Contato</a></li>
-                            <li><a href="http://localhost:5500/views/carrinho.html">Carrinho</a></li>
-                            <li v-if="logado"><a href="http://localhost:5500/views/minha-conta.html">Minha Conta</a>
+                            <li><a href="https://ecommerce-simao.herokuapp.com/contato">Contato</a></li>
+                            <li><a href="https://ecommerce-simao.herokuapp.com/carrinho">Carrinho</a></li>
+                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com/minha-conta">Minha Conta</a>
                             </li>
-                            <li v-if="naoLogado"><a href="http://localhost:5500/views/login.html">Entrar |
+                            <li v-if="naoLogado"><a href="https://ecommerce-simao.herokuapp.com/login">Entrar |
                                     Cadastre-se</a></li>
-                            <li v-if="logado"><a href="http://localhost:5500/views/" v-on:click="sair">Sair</a></li>
+                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com" v-on:click="sair">Sair</a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <input type="password" name="senha" id="senha">
                     <br>
                     <button v-on:click="submit">Entrar</button> <a id="criar"
-                        href="http://localhost:5500/views/cadastro.html">Não possui conta? Cadastre-se</a>
+                        href="https://ecommerce-simao.herokuapp.com/cadastro">Não possui conta? Cadastre-se</a>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
                         this.naoLogado = true;
                     }
                     else {
-                        axios.get('http://localhost:3000/usuarios/validar-token/?auth=' + localStorage.getItem('token'))
+                        axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/validar-token/?auth=' + localStorage.getItem('token'))
                             .then((response) => {
                                 console.log(response.data.status);
                                 if (response.data.status == "Valido") {
@@ -84,7 +84,7 @@
                     }
                 },
                 submit: function () {
-                    axios.post('http://localhost:3000/usuarios/auth', {
+                    axios.post('https://ecommerce-simao.herokuapp.com/api/usuarios/auth', {
                         email: document.getElementById('email').value,
                         senha: document.getElementById('senha').value
                     })
@@ -98,7 +98,7 @@
                             }
                             else {
                                 localStorage.setItem('token', response.data.token);
-                                window.location.href = 'http://localhost:5500/views/';
+                                window.location.href = 'https://ecommerce-simao.herokuapp.com/';
                             }
 
                         })

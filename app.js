@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 
 const produtoRoute = require('./routes/produtos');
 const userRoute = require('./routes/users');
+const viewsRoute = require('./routes/views');
 
-const url = 'url';
+const url = '';
 const option = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(url, option);
@@ -34,8 +35,9 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/produtos', produtoRoute);
-app.use('/usuarios', userRoute);
+app.use('/', viewsRoute);
+app.use('/api/produtos', produtoRoute);
+app.use('/api/usuarios', userRoute);
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000')

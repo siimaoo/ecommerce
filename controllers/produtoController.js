@@ -5,8 +5,8 @@ const Produtos = require('../models/produto');
 module.exports = {
     buscar(req, res) {
         Produtos.find({
-            active: true
-        }, 'nome preco slug', (err, data) => {
+            
+        }, (err, data) => {
             if (err) return res.status(500).send({ mensagem: "Falha ao processar sua requisição" });
             return res.status(200).send(data);
         })
