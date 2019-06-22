@@ -1,0 +1,69 @@
+#produto {
+    padding-top: 100px;
+}
+.produtos {
+    width: 90%;
+    margin-left: 5%;
+
+    overflow: hidden;
+}
+.produto {
+    height: 100%;
+    
+}
+.produtos img {
+    width: 50%;
+    height: auto;
+    position: relative;
+    top: 0;
+}
+.produto .titulo {
+    text-align: center;
+    font-size: 1.4em;
+}
+.produto .descricao {
+    display: flex;
+    width: 50%;
+    text-align: justify;
+    font-size: 1.2em;
+}
+.produto .preco {
+    text-align: left;
+    font-size: 1.3em;
+}
+#comprar{
+    width: calc(50% - 10px);
+    height: 50px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: 700;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#comprar {
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.titulo-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.titulo-section h1 {
+    background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: transparent;
+    -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2em;
+}

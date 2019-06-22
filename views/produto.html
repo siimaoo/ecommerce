@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index/index.css">
+    <link rel="stylesheet" href="css/produto/produto.css">
 </head>
 
 <body>
@@ -37,19 +37,20 @@
                 </div>
             </div>
         </nav>
-        <section>
+        <section id="produto">
             <div class="container">
                 <div class="titulo-section">
-                    <h1>Alguns produtos</h1>
+                    <h1>{{produto.nome}}</h1>
                 </div>
                 <div class="row">
                     <div class="col produtos">
                         <div class="produto">
                             <div class="img">
-                                <img :src="produto.imagem" alt="">
+                                <img :src="produto.imagem[0]" alt="">
                             </div>
-                            <div class="titulo">
-                                {{produto.nome}}
+                           <br>
+                            <div class="descricao">
+                                {{produto.descricao}}
                             </div>
                             <br>
                             <div class="preco">
@@ -58,7 +59,6 @@
                             <br>
                             <div class="action">
                                 <button id="comprar">Comprar</button>
-                                <button id="detalhes">Detalhes</button>
                             </div>
                         </div>
                     </div>
