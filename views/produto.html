@@ -58,7 +58,7 @@
                             </div>
                             <br>
                             <div class="action">
-                                <button id="comprar">Comprar</button>
+                                <button id="comprar" v-on:click="detalhesProdutos(produto.slug)">Comprar</button>
                             </div>
                             
                         </div>
@@ -99,6 +99,17 @@
                 this.buscarProdutos();
             },
             methods: {
+                adicionarCarrinho: function (slug) {
+                    if (localStorage) {
+                        let carrinho;
+                        if (!localStorage['carrinho']) carrinho = [];
+                        else carrinho = JSON.parse(localStorage['carrinho']);
+                        if (!(carrinho instanceof Array)) carrinho = [];
+                        carrinho.push({"produto":slug});
+                        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                    }
+                    
+                },
                 urlDecode: function (string, overwrite) {
                     if (!string || !string.length) {
                         return {};

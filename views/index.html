@@ -59,7 +59,7 @@
                             </div>
                             <br>
                             <div class="action">
-                                <button id="comprar" v-on:click="">Comprar</button>
+                                <button id="comprar" v-on:click="adicionarCarrinho(produto.slug)">Comprar</button>
                                 <button id="detalhes" v-on:click="detalhesProdutos(produto.slug)">Detalhes</button>
                             </div>
                         </div>
@@ -77,7 +77,8 @@
                 return {
                     logado: null,
                     naoLogado: null,
-                    produto: []
+                    produto: [],
+
                 }
             },
             mounted() {
@@ -85,8 +86,19 @@
                 this.buscarProdutos();
             },
             methods: {
-                detalhesProdutos: function(slug) {
-                    window.location.href = "produto.html?produto="+slug;
+                adicionarCarrinho: function (slug) {
+                    if (localStorage) {
+                        let carrinho;
+                        if (!localStorage['carrinho']) carrinho = [];
+                        else carrinho = JSON.parse(localStorage['carrinho']);
+                        if (!(carrinho instanceof Array)) carrinho = [];
+                        carrinho.push({"produto":slug});
+                        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                    }
+                    
+                },
+                detalhesProdutos: function (slug) {
+                    window.location.href = "produto.html?produto=" + slug;
                 },
                 buscarProdutos: function () {
                     axios.get('https://ecommerce-simao.herokuapp.com/api/produtos')
