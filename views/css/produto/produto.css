@@ -1,38 +1,54 @@
 #produto {
     padding-top: 100px;
 }
-.produtos {
-    width: 90%;
-    margin-left: 5%;
 
+.row {
+    width: 100%;
+}
+
+.produtos {
+    width: 50%;
     overflow: hidden;
 }
+
 .produto {
+    width: 100%;
     height: 100%;
-    
 }
-.produtos img {
-    width: 50%;
+
+.produtos .img {
+    width: 100%;
     height: auto;
     position: relative;
     top: 0;
 }
+
+.produtos .img img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+}
+
 .produto .titulo {
     text-align: center;
     font-size: 1.4em;
 }
+
 .produto .descricao {
     display: flex;
-    width: 50%;
+    width: 100%;
     text-align: justify;
     font-size: 1.2em;
 }
+
 .produto .preco {
     text-align: left;
     font-size: 1.3em;
 }
-#comprar{
-    width: calc(50% - 10px);
+
+#comprar {
+    width: 100%;
     height: 50px;
     display: inline-block;
     margin-left: 5px;
@@ -43,12 +59,15 @@
     border-radius: 5px;
     cursor: pointer;
 }
-#comprar {
-    background: #43cea2;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
 
+#comprar {
+    background: #43cea2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 .titulo-section {
     display: flex;
@@ -57,13 +76,59 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.titulo-section h1 {
-    background: #0f0c29;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+.titulo-section h1 {
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: transparent;
     -webkit-background-clip: text;
-  background-clip: text;
-  font-size: 2em;
+    background-clip: text;
+    font-size: 2em;
+}
+
+.imagens {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.outras-img {
+    width: 50%;
+    
+}
+
+.outras-img img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+}
+
+@media (max-width: 768px) {
+    .produtos {
+        width: 100%;
+    }
+    .imagens {
+        width: 100%;
+    }
+    .outras-img {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+  
+    .img-1, .img-2, .img-3 {
+        width: 30%;
+    }
+    .outras-img img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #000;
+    }
 }

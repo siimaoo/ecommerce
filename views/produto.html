@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
-    <title>Document</title>
+    <title></title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/produto/produto.css">
 </head>
@@ -48,7 +48,7 @@
                             <div class="img">
                                 <img :src="produto.imagem[0]" alt="">
                             </div>
-                           <br>
+                            <br>
                             <div class="descricao">
                                 {{produto.descricao}}
                             </div>
@@ -59,6 +59,22 @@
                             <br>
                             <div class="action">
                                 <button id="comprar">Comprar</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col imagens">
+                    <h1>Outras Fotos</h1>
+                        <br>
+                        <div class="outras-img">
+                            <div class="img-1">
+                                <img v-if="produto.imagem[1]" :src="produto.imagem[1]" alt="">
+                            </div>
+                            <div class="img-2">
+                                <img v-if="produto.imagem[2]" :src="produto.imagem[2]" alt="">
+                            </div>
+                            <div class="img-3">
+                                <img v-if="produto.imagem[0]" :src="produto.imagem[0]" alt="">
                             </div>
                         </div>
                     </div>
@@ -123,8 +139,9 @@
 
                     axios.get('https://ecommerce-simao.herokuapp.com/api/produtos/' + this.getvar("produto"))
                         .then((response) => {
-                            console.log(response)
+                         
                             this.produto = response.data;
+                            document.title = "Loja | " + response.data.nome;
                         });
                 },
                 verifyLogin: function () {
@@ -135,7 +152,7 @@
                     else {
                         axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/validar-token/?auth=' + localStorage.getItem('token'))
                             .then((response) => {
-                                console.log(response.data.status);
+                               
                                 if (response.data.status == "Valido") {
                                     this.logado = true;
                                     this.naoLogado = false;
