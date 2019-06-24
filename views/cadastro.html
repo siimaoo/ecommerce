@@ -23,11 +23,13 @@
                             <li><a href="#">Categorias</a></li>
                             <li><a href="https://ecommerce-simao.herokuapp.com/contato">Contato</a></li>
                             <li><a href="https://ecommerce-simao.herokuapp.com/carrinho">Carrinho</a></li>
-                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com/minha-conta">Minha Conta</a>
+                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com/minha-conta">Minha
+                                    Conta</a>
                             </li>
                             <li v-if="naoLogado"><a href="https://ecommerce-simao.herokuapp.com/login">Entrar |
                                     Cadastre-se</a></li>
-                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com" v-on:click="sair">Sair</a></li>
+                            <li v-if="logado"><a href="https://ecommerce-simao.herokuapp.com" v-on:click="sair">Sair</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -36,23 +38,91 @@
         <div class="formulario">
             <div class="container">
                 <div class="form">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
-                    <br>
-                    <label for="senha">Senha:</label>
-                    <input type="password" name="senha" id="senha">
-                    <br>
-                    <label for="resenha">Confirmar senha:</label>
-                    <input type="password" name="resenha" id="resenha">
-                    <br>
-    
-                    <button v-on:click="submit">Cadastrar</button> <a id="criar"
-                        href="https://ecommerce-simao.herokuapp.com/login">Já é cadastrado? Fazer login</a>
+                    <div class="row">
+                        <div class="col"><label for="email">Email:</label>
+                            <input type="email" name="email" id="email">
+                            <br>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="senha">Senha:</label>
+                            <input type="password" name="senha" id="senha">
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label for="resenha">Confirmar senha:</label>
+                            <input type="password" name="resenha" id="resenha">
+                            <br>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col"><label for="nome">Nome:</label>
+                            <input type="text" name="nome" id="nome">
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label for="sobrenome">Sobrenome:</label>
+                            <input type="text" name="sobrenome" id="sobrenome">
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" name="cpf" id="cpf">
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="cep">CEP:</label>
+                            <input type="text" name="cep" id="cep">
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label for="uf">UF:</label>
+                            <input type="text" name="uf" id="uf">
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" name="endereco" id="endereco">
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" name="cidade" id="cidade">
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label for="bairro">Bairro:</label>
+                            <input type="text" name="bairro" id="bairro">
+                            <br>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col button">
+                            <button v-on:click="submit">Cadastrar</button> <a id="criar"
+                                href="https://ecommerce-simao.herokuapp.com/login">Já é cadastrado? Fazer login</a>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -95,7 +165,17 @@
                     else {
                         axios.post('https://ecommerce-simao.herokuapp.com/api/usuarios/create', {
                             email: document.getElementById('email').value,
-                            senha: document.getElementById('senha').value
+                            senha: document.getElementById('senha').value,
+                            nome: document.getElementById('nome').value,
+                            sobrenome: document.getElementById('sobrenome').value,
+                            cpf: document.getElementById('cpf').value,
+                            endereco: [
+                                { cep: document.getElementById('cep').value },
+                                { estado: document.getElementById('cep').value },
+                                { cidade: document.getElementById('cidade').value },
+                                { logradouro: document.getElementById('endereco').value },
+                                { bairro: document.getElementById('bairro').value }
+                            ]
                         })
                             .then((response) => {
 
@@ -111,7 +191,7 @@
                             })
                             .catch(function (error) {
 
-                            }); 
+                            });
                     }
                 }
             }

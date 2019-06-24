@@ -1,23 +1,35 @@
 .form {
     width: 100%;
-    max-width: 500px;
     height: auto;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 50px;
     padding-top: 50px;
     box-shadow: 0px 0px 5px #000;
     padding-bottom: 50px;
     border-radius: 10px;
+    margin-bottom: 100px;
 }
 .formulario {
-    padding-top: 100px;
+    padding-top: 80px;
+}
+.row {
+    width: 100%;
+}
+.col {
+    width: 40%;
+    margin-left: 5%;
+}
+.button {
+    justify-content: flex-end;
+    align-items: center;
+    width: 100% ;
 }
 label {
     margin-left: 5%;
 }
-#email, #senha, #resenha {
-    width: 90%;
-    margin-left: 5%;
+#email, #senha, #resenha, #nome, #sobrenome, #cpf, #cep, #uf, #cidade, #endereco, #bairro {
+    width: 100%;
+   margin-left: 5%;
     height: 40px;
     margin-bottom: 30px;
     font-weight: 700;
@@ -28,8 +40,7 @@ label {
     border-radius: 10px;
 }
 button {
-    width: 90%;
-    margin-left: 5%;
+    width: 50%;
     height: 50px;
     border: 1px solid #fff;
     background: rgb(0, 102, 255);
@@ -49,4 +60,22 @@ button {
     justify-content: flex-end;
     margin-top: 30px;
     
+}
+@media (max-width: 768px) {
+    .col {
+        width: 90%;
+        margin-left: 0%;
+        
+    }
+    .button {
+        align-items: flex-end;
+        margin-left: 5%;
+    }
+    .button button{
+        width: 100%;
+        
+    }
+    .button a {
+        float: right;
+    }
 }
