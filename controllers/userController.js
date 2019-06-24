@@ -26,7 +26,7 @@ module.exports = {
             if (data) return res.send({ error: "Usuario já registrado!" });
 
             Users.create(req.body, (err, data) => {
-                if (err) return res.send({ error: "Erro ao criar usuario!" });
+                if (err) return res.send({ error: "Erro ao criar usuario!" + err });
                 data.senha = undefined;
                 return res.send({data, token: createUserToken(data.id)});
             });
