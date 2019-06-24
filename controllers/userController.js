@@ -20,7 +20,7 @@ module.exports = {
         const { email, senha, nome, sobrenome, cpf } = req.body;
         let endereco = new Array();
         endereco.push(req.body.endereco);
-        if (!email || !senha || !nome || !sobrenom || !cpf ) return res.send({ error: "Dados não preenchidos!" });
+        if (!email || !senha || !nome || !sobrenome || !cpf ) return res.send({ error: "Dados não preenchidos!" });
         Users.findOne({ email: email }, (err, data) => {
             if (err) return res.send({ error: "Erro ao buscar usuario!" });
             if (data) return res.send({ error: "Usuario já registrado!" });
