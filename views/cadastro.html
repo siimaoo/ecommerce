@@ -163,19 +163,25 @@
                         alert("As senhas devem coincidir")
                     }
                     else {
+                        let endereco = [
+                            { cep: document.getElementById('cep').value },
+                            { estado: document.getElementById('uf').value },
+                            { cidade: document.getElementById('cidade').value },
+                            { logradouro: document.getElementById('endereco').value },
+                            { bairro: document.getElementById('bairro').value }
+                        ];
+                        let email = document.getElementById('email').value;
+                        let senha = document.getElementById('senha').value;
+                        let nome = document.getElementById('nome').valu;
+                        let sobrenome = document.getElementById('sobrenome').value;
+                        let cpf = document.getElementById('cpf').value;
                         axios.post('https://ecommerce-simao.herokuapp.com/api/usuarios/create', {
-                            email = document.getElementById('email').value,
-                            senha = document.getElementById('senha').value,
-                            nome = document.getElementById('nome').value,
-                            sobrenome = document.getElementById('sobrenome').value,
-                            cpf = document.getElementById('cpf').value,
-                            endereco = [
-                                { "cep": document.getElementById('cep').value },
-                                { "estado": document.getElementById('uf').value },
-                                { "cidade": document.getElementById('cidade').value },
-                                { "logradouro": document.getElementById('endereco').value },
-                                { "bairro": document.getElementById('bairro').value }
-                            ]
+                            email,
+                            senha,
+                            nome,
+                            sobrenome,
+                            cpf,
+                            endereco
                         })
                             .then((response) => {
 
