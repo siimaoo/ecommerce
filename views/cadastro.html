@@ -139,7 +139,7 @@
             },
             methods: {
                 verifyLogin: function () {
-                    if (localStorage.getItem('token') == null) {
+                    if (localStorage.getItem('token') == null || localStorage.getItem('token') == undefined) {
                         this.logado = false
                         this.naoLogado = true;
                     }
@@ -171,7 +171,7 @@
                             cpf: document.getElementById('cpf').value,
                             endereco: [
                                 { "cep": document.getElementById('cep').value },
-                                { "estado": document.getElementById('cep').value },
+                                { "estado": document.getElementById('estado').value },
                                 { "cidade": document.getElementById('cidade').value },
                                 { "logradouro": document.getElementById('endereco').value },
                                 { "bairro": document.getElementById('bairro').value }
@@ -181,7 +181,6 @@
 
                                 console.log(response.data);
                                 if (response.data.hasOwnProperty("error")) {
-                                    console.log(response.data);
                                     this.alert = true;
                                     alert(response.data.error)
                                 }
