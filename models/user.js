@@ -8,13 +8,13 @@ const UserSchema = new Schema({
     nome: {type: String, required: true, select: true},
     sobrenome: {type: String, required: true, select: true},
     cpf: {type: String, required: true, select: true, unique: true,},
-    endereco: [{
-        logradouro: {type: String, required: true, select: true},
-        bairro: {type: String, required: true, select: true},
-        cidade: {type: String, required: true, select: true},
-        cep: {type: String, required: true, select: true},
-        estado: {type: String, required: true, select: true},
-    }],
+    endereco: {
+        logradouro: {type: String, required: true, select: true, default: undefined},
+        bairro: {type: String, required: true, select: true, default: undefined},
+        cidade: {type: String, required: true, select: true, default: undefined},
+        cep: {type: String, required: true, select: true, default: undefined},
+        estado: {type: String, required: true, select: true, default: undefined},
+    },
     created: {type: Date, default: Date.now}
 });
 
