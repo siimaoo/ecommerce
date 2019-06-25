@@ -163,13 +163,13 @@
                         alert("As senhas devem coincidir")
                     }
                     else {
-                        let endereco = [
-                            { cep: document.getElementById('cep').value },
-                            { estado: document.getElementById('uf').value },
-                            { cidade: document.getElementById('cidade').value },
-                            { logradouro: document.getElementById('endereco').value },
-                            { bairro: document.getElementById('bairro').value }
-                        ];
+                        let endereco = {
+                            cep: document.getElementById('cep').value,
+                            estado: document.getElementById('uf').value,
+                            cidade: document.getElementById('cidade').value,
+                            logradouro: document.getElementById('endereco').value ,
+                            bairro: document.getElementById('bairro').value 
+                        };
                         let email = document.getElementById('email').value;
                         let senha = document.getElementById('senha').value;
                         let nome = document.getElementById('nome').value;
