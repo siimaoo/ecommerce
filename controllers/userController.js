@@ -18,8 +18,6 @@ module.exports = {
     },
     criar(req, res) {
         const { email, senha, nome, sobrenome, cpf } = req.body;
-        let endereco = new Array();
-        endereco.push(req.body.endereco);
         if (!email || !senha || !nome || !sobrenome || !cpf ) return res.send({ error: "Dados não preenchidos!" });
         Users.findOne({ email: email }, (err, data) => {
             if (err) return res.send({ error: "Erro ao buscar usuario!" });
