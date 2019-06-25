@@ -18,7 +18,7 @@ module.exports = {
     },
     criar(req, res) {
         const { email, senha, nome, sobrenome, cpf, endereco } = req.body;
-        if (!email || !senha || !nome || !sobrenome || !cpf ) return res.send({ error: "Dados não preenchidos!" + email + senha + nome + sobrenome + cpf + endereco });
+        if (!email || !senha || !nome || !sobrenome || !cpf || !endereco ) return res.send({ error: "Dados não preenchidos!"});
         Users.findOne({ email: email }, (err, data) => {
             if (err) return res.send({ error: "Erro ao buscar usuario!" });
             if (data) return res.send({ error: "Usuario já registrado!" });
