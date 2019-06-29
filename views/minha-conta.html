@@ -90,7 +90,7 @@
             },
             methods: {
                 userData: function() {
-                    axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/'+ localStorage.getItem('id'))
+                    axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/id/'+ localStorage.getItem('id'))
                     .then((response) => {
                         console.log(response.data);
                     })

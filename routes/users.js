@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth');
 
 
 router.get('/', userController.buscar);
-router.get('/:id', userController.buscarId);
+router.get('/id/:id', userController.buscarId);
 router.post('/create', userController.criar);
 router.post('/auth', userController.auth);
 router.get('/validar-token', auth, userController.validacao);
