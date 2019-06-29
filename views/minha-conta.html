@@ -44,28 +44,40 @@
                     <div class="dados-pessoais">
                         <div class="row">
                             <div class="nome">
-                                <h1>{{data.nome}}</h1>
+                                <h3>{{data.nome}} {{data.sobrenome}}</h3>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="cpf"></div>
+                            <div class="cpf">
+                                <h3>{{data.cpf}}</h3>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="endereco">
                                 <div class="row">
-                                    <div class="cep"></div>
+                                    <div class="cep">
+                                        <h3>{{data.endereco.cep}}</h3>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="logradouro"></div>
+                                    <div class="logradouro">
+                                        <h3>{{data.endereco.rua}}</h3>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="bairro"></div>
+                                    <div class="bairro">
+                                        <h3>{{data.endereco.bairro}}</h3>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="cidade"></div>
+                                    <div class="cidade">
+                                        <h3>{{data.endereco.cidade}}</h3>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="estado"></div>
+                                    <div class="estado">
+                                        <h3>{{data.endereco.estado}}</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
