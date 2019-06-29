@@ -150,6 +150,7 @@
                                 if (response.data.status == "Valido") {
                                     this.logado = true;
                                     this.naoLogado = false;
+                                    window.location.href = "https://ecommerce-simao.herokuapp.com/";
                                 }
                                 else {
                                     this.logado = false;
@@ -193,6 +194,7 @@
                                 else {
                                     alert("Cadastro realizado!");
                                     localStorage.setItem('token', response.data.token);
+                                    localStorage.setItem('id', response.data.id);
                                     window.location.href = 'https://ecommerce-simao.herokuapp.com';
                                 }
 

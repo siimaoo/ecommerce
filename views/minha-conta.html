@@ -5,8 +5,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login/login.css">
     <title>Loja | Login</title>
+    <link rel="stylesheet" href="css/minha-conta/minha-conta.css">
 </head>
 
 <body>
@@ -33,20 +33,44 @@
                 </div>
             </div>
         </nav>
-        <div class="formulario">
+        <section class="account">
             <div class="container">
-                <div class="form">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
-                    <br>
-                    <label for="senha">Senha:</label>
-                    <input type="password" name="senha" id="senha">
-                    <br>
-                    <button v-on:click="submit">Entrar</button> <a id="criar"
-                        href="https://ecommerce-simao.herokuapp.com/cadastro">Não possui conta? Cadastre-se</a>
+                <div class="dados">
+                    <div class="row">
+                        <div class="foto">
+
+                        </div>
+                    </div>
+                    <div class="dados-pessoais">
+                        <div class="row">
+                            <div class="nome"></div>
+                        </div>
+                        <div class="row">
+                            <div class="cpf"></div>
+                        </div>
+                        <div class="row">
+                            <div class="endereco">
+                                <div class="row">
+                                    <div class="cep"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="logradouro"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="bairro"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="cidade"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="estado"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -62,12 +86,20 @@
             },
             mounted() {
                 this.verifyLogin();
+                this.userData();
             },
             methods: {
+                userData: function() {
+                    axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/'+ localStorage.getItem('id'))
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+                },
                 verifyLogin: function () {
                     if (localStorage.getItem('token') == null) {
                         this.logado = false
                         this.naoLogado = true;
+                        window.location.href = "https://ecommerce-simao.herokuapp.com/login";
                     }
                     else {
                         axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/validar-token/?auth=' + localStorage.getItem('token'))
@@ -76,40 +108,19 @@
                                 if (response.data.status == "Valido") {
                                     this.logado = true;
                                     this.naoLogado = false;
-                                    window.location.href = "https://ecommerce-simao.herokuapp.com/";
                                 }
                                 else {
                                     this.logado = false;
                                     this.naoLogado = true;
+                                    window.location.href = "https://ecommerce-simao.herokuapp.com/login";
                                 }
                             })
                     }
-                },
-                submit: function () {
-                    axios.post('https://ecommerce-simao.herokuapp.com/api/usuarios/auth', {
-                        email: document.getElementById('email').value,
-                        senha: document.getElementById('senha').value
-                    })
-                        .then((response) => {
-
-                            console.log(response.data);
-                            if (response.data.hasOwnProperty("error")) {
-                                console.log(response.data);
-
-                                alert(response.data.error);
-                            }
-                            else {
-                                localStorage.setItem('token', response.data.token);
-                                localStorage.setItem('id', response.data.id);
-                                window.location.href = 'https://ecommerce-simao.herokuapp.com/';
-                            }
-
-                        })
-                        .catch(function (error) {
-
-                        });
-
+                },sair: function () {
+                    localStorage.removeItem('token');
+                    window.location.href = "https://ecommerce-simao.herokuapp.com/"
                 }
+               
             }
         })
     </script>
