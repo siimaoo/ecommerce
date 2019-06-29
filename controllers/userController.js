@@ -16,6 +16,12 @@ module.exports = {
             return res.send(data);
         });
     },
+    buscarId(req, res) {
+        Users.find({_id: req.params.id}, (err, data) => {
+            if (err) return res.send({ error: 'Erro na consulta de usuarios!' });
+            return res.send(data);
+        });
+    },
     criar(req, res) {
         const { email, senha, nome, sobrenome, cpf, endereco } = req.body;
         if (!email || !senha || !nome || !sobrenome || !cpf || !endereco ) return res.send({ error: "Dados não preenchidos!"});
