@@ -43,7 +43,9 @@
                     </div>
                     <div class="dados-pessoais">
                         <div class="row">
-                            <div class="nome"></div>
+                            <div class="nome">
+                                <h1>{{data.nome}}</h1>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="cpf"></div>
@@ -82,6 +84,7 @@
                 return {
                     logado: null,
                     naoLogado: null,
+                    data: []
                 }
             },
             mounted() {
@@ -92,6 +95,7 @@
                 userData: function() {
                     axios.get('https://ecommerce-simao.herokuapp.com/api/usuarios/id/'+ localStorage.getItem('id'))
                     .then((response) => {
+                        this.data = response.data;
                         console.log(response.data);
                     })
                 },

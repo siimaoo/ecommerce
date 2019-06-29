@@ -17,8 +17,10 @@ module.exports = {
         });
     },
     buscarId(req, res) {
-        Users.findById({_id: req.params.id}, (err, data) => {
-            if (err) return res.send({ error: 'Erro na consulta de usuarios!' });
+        Users.findById({
+            _id: req.params.id
+        }, (err, data) => {
+            if (err) return res.send({ error: 'Erro na consulta de usuarios!' + err});
             return res.send(data);
         });
     },
