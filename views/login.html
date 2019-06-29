@@ -92,7 +92,6 @@
                     })
                         .then((response) => {
 
-                            alert(response.data.data._id);
                             if (response.data.hasOwnProperty("error")) {
                                 console.log(response.data);
 
@@ -100,7 +99,7 @@
                             }
                             else {
                                 localStorage.setItem('token', response.data.token);
-                                localStorage.setItem('id', response.data._id);
+                                localStorage.setItem('id', response.data..data_id);
                                 window.location.href = 'https://ecommerce-simao.herokuapp.com/';
                             }
 
